@@ -4,18 +4,9 @@
 
 FoodHub is a food aggregator platform that connects customers with restaurants through an online ordering and delivery application.
 
-As the number of restaurants and online food orders continues to grow, understanding customer demand, restaurant performance, delivery efficiency, and order behavior becomes increasingly important.
+As the number of restaurants and online food orders continues to grow, understanding customer demand, restaurant performance, delivery efficiency, ratings, and order behavior becomes increasingly important.
 
-This project performs an **Exploratory Data Analysis (EDA)** on FoodHub order data to uncover patterns that can help the company:
-
-- Understand restaurant and cuisine demand
-- Analyze customer ordering behavior
-- Evaluate delivery performance
-- Understand customer ratings
-- Estimate platform revenue
-- Identify opportunities to improve customer experience
-
-The analysis combines descriptive statistics, data cleaning, visualization, and multivariate analysis to translate raw order data into actionable business insights.
+This project performs an **Exploratory Data Analysis (EDA)** on FoodHub order data to identify business patterns and provide actionable recommendations that can help improve customer experience, restaurant performance, operational efficiency, and revenue opportunities.
 
 ---
 
@@ -27,14 +18,14 @@ The objective of this project is to analyze FoodHub's historical order data and 
 - Popular restaurants
 - Cuisine demand
 - Order costs
-- Ratings
+- Customer ratings
 - Food preparation time
 - Delivery time
 - Weekday vs. weekend behavior
 - Revenue generation
 - Restaurant promotion opportunities
 
-The final goal is to provide recommendations that can help FoodHub improve customer experience and business performance.
+The final goal is to translate transaction-level data into practical recommendations for operations, marketing, restaurant partnerships, and customer engagement.
 
 ---
 
@@ -92,24 +83,24 @@ The analysis included:
 - Column data types
 - Statistical summaries
 - Missing-value checks
-- Data-quality issues
 - Unique values across important categorical variables
+- Data-quality issues
 
 A key data-quality issue identified was the `rating` column.
 
 There were **736 orders where the rating was recorded as `"Not given"`** rather than as a numeric value.
 
-This required appropriate treatment before performing numerical analysis involving customer ratings.
+This issue was handled before performing numerical analysis involving customer ratings.
 
 ---
 
 ## Data Cleaning
 
-The `rating` variable contained both numerical ratings and `"Not given"` values.
+The `rating` variable contained both numerical values and `"Not given"` entries.
 
 Before performing rating-based analysis, the column was cleaned and converted into a suitable numerical format.
 
-This ensured that subsequent visualizations and calculations involving ratings were accurate and did not fail because of mixed data types.
+This ensured that subsequent calculations and visualizations involving ratings were accurate.
 
 ---
 
@@ -136,33 +127,39 @@ Visualizations included:
 - Count plots
 - Box plots
 
-These visualizations helped identify common ordering patterns, popular cuisines, typical delivery times, and potential outliers.
+These visualizations helped identify order patterns, cuisine preferences, delivery behavior, and potential operational issues.
 
 ---
 
 ## Restaurant Demand Analysis
 
-Restaurant order counts were analyzed to identify the most frequently ordered restaurants on the FoodHub platform.
+Restaurant order counts were analyzed to identify the most frequently ordered restaurants on the platform.
 
 This helps FoodHub understand:
 
 - Which restaurants receive the highest demand
 - Which restaurants contribute heavily to platform activity
-- Which restaurant partners may be suitable for promotional campaigns
+- Which restaurant partners could be prioritized for promotions and strategic partnerships
 
 ---
 
 ## Cuisine Analysis
 
-Cuisine categories were analyzed to understand customer preferences.
+Cuisine categories were analyzed to understand customer preferences and demand patterns.
 
-The analysis helped identify:
+The analysis showed particularly strong demand and ratings for cuisines such as:
 
-- Most popular cuisines
-- Relative demand across cuisine types
-- Opportunities for cuisine-specific promotions
+- American
+- Japanese
+- Italian
 
-Understanding cuisine demand can help FoodHub improve restaurant onboarding, promotions, and customer recommendations.
+Premium cuisines such as:
+
+- French
+- Thai
+- Spanish
+
+also present opportunities for differentiated marketing and higher-value customer targeting.
 
 ---
 
@@ -173,17 +170,17 @@ The distribution of `cost_of_the_order` was analyzed to understand customer spen
 This provides insight into:
 
 - Typical order values
-- High-value orders
+- Higher-value orders
 - Customer spending patterns
-- Revenue opportunities
+- Potential segmentation opportunities
 
-Order value is particularly important because FoodHub earns revenue through commissions or margins on completed orders.
+Order value is especially important because FoodHub earns revenue through commissions or margins on completed orders.
 
 ---
 
 # Multivariate Analysis
 
-Relationships between multiple variables were explored to understand how different factors interact.
+Relationships between important business variables were analyzed to understand how different factors interact.
 
 The analysis included relationships between:
 
@@ -195,7 +192,7 @@ The analysis included relationships between:
 - Delivery time and day of the week
 - Customer ratings and delivery characteristics
 
-Appropriate plots included:
+Appropriate visualizations included:
 
 - Box plots
 - Bar charts
@@ -206,31 +203,25 @@ Appropriate plots included:
 
 ## Rating Analysis
 
-Customer ratings were analyzed after converting the rating column into a numerical format.
+Customer ratings were analyzed after converting the rating column into numerical format.
 
-The analysis helped explore whether rating behavior was associated with:
+A large proportion of orders were unrated, limiting the completeness of restaurant and service-quality analysis.
 
-- Restaurant
-- Cuisine
-- Order cost
-- Preparation time
-- Delivery performance
+Nearly **40% of orders did not contain a rating**.
 
-Customer ratings provide an important signal for understanding overall customer experience.
+This represents an important opportunity for FoodHub to improve the quality of customer-feedback data.
 
 ---
 
 ## Promotional Restaurant Analysis
 
-The project identified restaurants meeting the criteria for potential promotional offers.
+The project identified restaurants that met criteria for promotional offers based on a combination of:
 
-This allows FoodHub to identify restaurants that:
+- Order volume
+- Customer ratings
+- Overall demand
 
-- Receive sufficient order volume
-- Maintain strong customer ratings
-- May benefit from promotional partnerships
-
-Such analysis can support targeted promotions rather than offering incentives uniformly across every restaurant.
+High-performing restaurants such as **Shake Shack** and **Blue Ribbon Sushi Izakaya** provide useful benchmarks for restaurant quality and customer demand.
 
 ---
 
@@ -238,218 +229,327 @@ Such analysis can support targeted promotions rather than offering incentives un
 
 FoodHub earns revenue by collecting a margin on restaurant orders.
 
-Based on the business rules provided in the analysis, the estimated net revenue generated was:
+Based on the provided commission structure, the estimated net revenue generated from the analyzed dataset was:
 
 **$6,166.30**
 
-This analysis demonstrates how order-level data can be translated directly into financial insights.
+This demonstrates how order-level data can be translated into financial insights.
 
 ---
 
 ## Delivery Performance
 
-Delivery performance was analyzed to understand how frequently customers experience long total order times.
+Delivery time was analyzed across different order patterns and days of the week.
 
 Approximately **10.54% of orders took more than 60 minutes** from preparation through delivery.
 
-Long order times can negatively affect customer experience and potentially influence ratings and repeat usage.
-
-This makes delivery efficiency an important operational metric for FoodHub.
+Weekday delivery times were higher than weekend delivery times, highlighting a potential operational bottleneck during weekday periods.
 
 ---
 
-## Weekday vs. Weekend Delivery
+## Weekday vs. Weekend Demand
 
-Delivery behavior was compared between weekdays and weekends.
+Order demand differs substantially across weekdays and weekends.
 
-The analysis showed differences in delivery times between the two periods.
+Approximately **71% of total orders were placed on weekends**.
 
-This may reflect factors such as:
+This concentration of demand has important implications for:
 
-- Traffic conditions
-- Order volume
-- Delivery-partner availability
-- Restaurant workload
-
-Understanding these differences can help FoodHub improve delivery staffing and operational planning.
+- Delivery staffing
+- Restaurant preparation capacity
+- Inventory planning
+- Promotional timing
+- Resource allocation
 
 ---
 
 # Key Business Insights
 
-## 1. Restaurant Demand Is Concentrated
+## 1. Weekend Demand Dominates Order Volume
 
-A relatively small set of restaurants receives a large share of orders.
+Approximately **71% of FoodHub orders occur on weekends**.
 
 ### Business Implication
 
-FoodHub can strengthen relationships with high-demand restaurants while also helping lower-volume restaurants improve visibility.
+FoodHub should treat weekends as its primary demand period and align operational resources accordingly.
 
 ---
 
-## 2. Cuisine Preference Can Guide Promotions
+## 2. Weekday Delivery Efficiency Is an Opportunity
 
-Certain cuisine categories receive considerably higher order volumes.
+Weekday deliveries take longer than weekend deliveries.
 
 ### Business Implication
 
-FoodHub can use cuisine-level demand information for:
-
-- Personalized recommendations
-- Targeted promotions
-- Restaurant acquisition
-- Marketing campaigns
+FoodHub should investigate traffic, driver availability, and delivery-zone inefficiencies during weekday peak periods.
 
 ---
 
-## 3. Customer Ratings Require Better Capture
+## 3. Customer Feedback Coverage Is Incomplete
 
-A substantial number of orders have no recorded customer rating.
+Nearly **40% of orders are unrated**.
 
 ### Business Implication
 
-Increasing rating participation can provide FoodHub with stronger data for evaluating restaurant quality and customer satisfaction.
+Incomplete rating data limits FoodHub's ability to accurately assess:
+
+- Restaurant quality
+- Customer satisfaction
+- Delivery experience
+- Service gaps
 
 ---
 
-## 4. Long Delivery Times Affect a Meaningful Share of Orders
+## 4. Popular Cuisines Can Drive Marketing Strategy
 
-Approximately **10.54% of orders exceed 60 minutes** in total processing and delivery time.
+American, Japanese, and Italian cuisines combine strong demand with favorable ratings.
 
 ### Business Implication
 
-FoodHub should monitor slow orders and identify whether delays originate from:
+These cuisines can be prominently featured in high-volume marketing campaigns.
 
-- Restaurant preparation
-- Delivery assignment
-- Pickup delays
-- Travel time
+Premium cuisines such as French, Thai, and Spanish can be positioned as higher-value or special-experience options.
 
 ---
 
-## 5. Weekday and Weekend Operations Differ
+## 5. High-Performing Restaurants Can Serve as Benchmarks
 
-Delivery performance varies between weekdays and weekends.
+Restaurants such as Shake Shack and Blue Ribbon Sushi Izakaya demonstrate strong performance.
 
 ### Business Implication
 
-Delivery staffing and operational strategies should account for differences in demand and delivery conditions throughout the week.
+FoodHub can use high-performing partners as benchmarks for:
+
+- Service quality
+- Customer satisfaction
+- Delivery readiness
+- Restaurant operating practices
 
 ---
 
-## 6. Restaurant Performance Can Support Targeted Promotions
+## 6. Customer Spending Behavior Enables Segmentation
 
-Restaurants with strong ratings and sufficient order volumes can be identified through historical order data.
+Order-value differences create opportunities to distinguish between:
+
+- High-spend customers
+- Price-sensitive customers
 
 ### Business Implication
 
-FoodHub can allocate promotional spending toward restaurants that demonstrate strong customer satisfaction and demand.
+FoodHub can tailor promotions and recommendations to customer value segments.
 
 ---
 
-## 7. Order Data Directly Supports Revenue Analysis
+## 7. Historical Demand Can Support Resource Planning
 
-The analysis estimated approximately **$6,166.30 in platform revenue** based on the provided commission structure.
+Strong weekend concentration and delivery-time patterns can be used to guide staffing and supply decisions.
 
 ### Business Implication
 
-Combining order behavior with revenue rules enables FoodHub to evaluate which customers, restaurants, cuisines, and order-value ranges contribute most to the business.
+Demand analysis can improve:
+
+- Driver allocation
+- Restaurant staffing
+- Delivery capacity
+- Inventory planning
 
 ---
 
 # Business Recommendations
 
-## Recommendation 1 — Strengthen Partnerships With High-Demand Restaurants
+## Recommendation 1 — Improve Weekday Delivery Efficiency
 
-Restaurants receiving consistently high order volumes should be treated as strategically important partners.
+Weekday delivery performance should be a priority.
 
-FoodHub can use:
+FoodHub can:
 
-- Promotional placements
-- Joint offers
-- Loyalty campaigns
-- Exclusive discounts
+- Improve route optimization
+- Increase driver allocation during weekday lunch and evening peaks
+- Use real-time traffic information
+- Identify frequently delayed delivery zones
+- Improve driver-to-order matching
 
-to strengthen these relationships.
-
----
-
-## Recommendation 2 — Use Cuisine Demand for Personalization
-
-Cuisine preferences can be incorporated into recommendation and marketing strategies.
-
-Customers can receive:
-
-- Cuisine-specific promotions
-- Restaurant recommendations
-- Personalized offers
-
-based on historical ordering behavior.
+This can help reduce delivery delays and improve customer experience.
 
 ---
 
-## Recommendation 3 — Improve Delivery Performance
+## Recommendation 2 — Encourage More Customer Ratings
 
-Orders exceeding 60 minutes should be monitored closely.
+With nearly 40% of orders unrated, FoodHub should increase customer participation in post-delivery feedback.
 
-FoodHub can analyze whether delays originate from restaurant preparation or delivery operations and use this information to improve:
+Potential actions include:
 
-- Delivery-partner allocation
-- Pickup coordination
-- Restaurant performance monitoring
-- ETA estimates
-
----
-
-## Recommendation 4 — Increase Customer Rating Participation
-
-Since many orders have `"Not given"` ratings, FoodHub can encourage customers to provide feedback through:
-
-- In-app reminders
+- Loyalty points for leaving ratings
+- Small promotional incentives
 - Simplified rating flows
-- Small incentives
-- Post-delivery notifications
+- Post-delivery reminders
+- In-app prompts
 
-More complete rating data would improve restaurant-quality analysis.
-
----
-
-## Recommendation 5 — Optimize Weekend Operations
-
-Since delivery behavior differs between weekdays and weekends, FoodHub should adjust delivery capacity based on historical demand patterns.
-
-This can include:
-
-- Increasing delivery-partner availability
-- Improving peak-hour allocation
-- Monitoring restaurant preparation capacity
+Better rating coverage would improve FoodHub's ability to evaluate restaurant and delivery performance.
 
 ---
 
-## Recommendation 6 — Use Data for Targeted Restaurant Promotions
+## Recommendation 3 — Promote High-Rated and Popular Cuisines
 
-Promotions should be based on measurable restaurant performance rather than applied uniformly.
+American, Japanese, and Italian cuisines should be featured prominently in high-volume campaigns.
 
-Relevant factors include:
+FoodHub can also position cuisines such as French, Thai, and Spanish as premium or special-experience offerings.
+
+This supports both:
+
+- High-demand customer acquisition
+- Higher-value order opportunities
+
+---
+
+## Recommendation 4 — Benchmark Restaurant Performance
+
+FoodHub should evaluate restaurants using a structured combination of:
 
 - Order volume
-- Customer ratings
-- Cuisine popularity
-- Revenue contribution
+- Ratings
+- Delivery performance
+- Customer demand
+
+Restaurants can be grouped into segments such as:
+
+```text
+High Performer
+Improvement Needed
+Low Demand
+```
+
+High-performing restaurants can be used as benchmarks.
+
+Restaurants needing improvement can receive:
+
+- Operational guidance
+- Service-quality training
+- Targeted promotions
+- Personalized support
 
 ---
 
-## Recommendation 7 — Monitor Revenue by Business Segment
+## Recommendation 5 — Introduce Performance-Based Incentives
 
-Revenue analysis can be extended across:
+FoodHub can explore dynamic commission or incentive structures for restaurants.
 
-- Restaurant
-- Cuisine
-- Customer
-- Day of week
-- Order-value range
+For example, restaurants that maintain:
 
-This can help FoodHub identify where its strongest revenue opportunities exist.
+- Strong ratings
+- High order volume
+- Fast preparation times
+- Reliable service
+
+could receive preferential incentives or lower commissions.
+
+This can encourage restaurants to prioritize both quality and operational efficiency.
+
+---
+
+## Recommendation 6 — Segment Customers for Personalized Marketing
+
+FoodHub can segment customers based on spending behavior.
+
+### High-Spend Customers
+
+Recommend:
+
+- Premium cuisines
+- New restaurant experiences
+- Higher-value meal options
+- Loyalty offers
+
+### Price-Sensitive Customers
+
+Recommend:
+
+- Budget-friendly restaurants
+- Discounts
+- Value meals
+- Reliable lower-cost options
+
+This can improve both customer relevance and marketing effectiveness.
+
+---
+
+## Recommendation 7 — Use Association Analysis for Better Recommendations
+
+FoodHub can analyze ordering patterns to identify relationships such as:
+
+```text
+Customers who ordered X
+      ↓
+Often also order Y
+```
+
+Association-rule techniques can support:
+
+- Cross-selling
+- Personalized restaurant recommendations
+- Cuisine recommendations
+- Bundled promotions
+
+---
+
+## Recommendation 8 — Use Demand Forecasting for Operations
+
+Because approximately **71% of orders occur on weekends**, FoodHub can use historical demand patterns to improve operational planning.
+
+Potential applications include:
+
+- Driver scheduling
+- Restaurant staffing
+- Delivery capacity
+- Inventory preparation
+- Peak-period planning
+
+This can improve resource utilization and reduce service bottlenecks.
+
+---
+
+# Strategic Opportunities
+
+The analysis suggests several areas where FoodHub can extend its use of data.
+
+## Restaurant Segmentation
+
+Restaurants can be grouped based on:
+
+- Ratings
+- Order volume
+- Delivery performance
+- Revenue contribution
+
+This can help FoodHub differentiate between strategic partners and restaurants needing operational support.
+
+---
+
+## Predictive Revenue Modeling
+
+A future predictive model could estimate how changes in:
+
+- Commission rates
+- Promotions
+- Pricing
+- Restaurant performance
+
+may affect FoodHub's revenue.
+
+This would support more informed commercial decisions.
+
+---
+
+## Customer Recommendation Systems
+
+Customer ordering history can support:
+
+- Cuisine recommendations
+- Restaurant recommendations
+- Personalized offers
+- Cross-selling
+
+This can increase customer engagement and repeat ordering.
 
 ---
 
@@ -469,13 +569,26 @@ The analysis examined:
 - Revenue generation
 - Weekday and weekend differences
 
-A key data-quality issue was identified in the rating column, where **736 ratings were recorded as `"Not given"`** and required treatment before numerical analysis.
+A key data-quality issue was identified in the rating column, where **736 orders were recorded as `"Not given"`**, representing nearly 40% of orders.
 
-The analysis also found that approximately **10.54% of orders exceeded 60 minutes**, highlighting delivery efficiency as an important operational consideration.
+Approximately **71% of total orders occur on weekends**, making weekend demand a major operational planning factor.
 
-Using the provided commission structure, FoodHub's estimated revenue from the analyzed orders was approximately **$6,166.30**.
+The analysis also found that approximately **10.54% of orders exceeded 60 minutes**, while weekday delivery times were higher than weekend delivery times.
 
-Overall, the project demonstrates how exploratory data analysis can translate transactional data into actionable insights related to customer experience, restaurant strategy, operations, and revenue.
+Using the provided commission rules, FoodHub's estimated revenue from the analyzed orders was approximately **$6,166.30**.
+
+The findings suggest several actionable opportunities, including:
+
+- Improving weekday delivery efficiency
+- Increasing customer rating participation
+- Promoting popular and high-rated cuisines
+- Benchmarking restaurant performance
+- Introducing performance-based restaurant incentives
+- Segmenting customers for personalized marketing
+- Using association analysis for recommendations
+- Applying demand forecasting for staffing and resource planning
+
+Overall, the project demonstrates how exploratory data analysis can convert transactional food-delivery data into practical insights across operations, marketing, restaurant partnerships, customer engagement, and revenue strategy.
 
 ---
 
@@ -498,6 +611,9 @@ This project demonstrates practical application of:
 - Restaurant Demand Analysis
 - Revenue Analysis
 - Delivery Performance Analysis
+- Customer Segmentation Concepts
+- Restaurant Segmentation Concepts
+- Demand Planning
 - Business Insight Generation
 - Data-Driven Recommendations
 
@@ -539,8 +655,6 @@ foodhub-order-analysis/
 
 # Conclusion
 
-This project demonstrates how **Exploratory Data Analysis can transform transactional food-delivery data into meaningful business insights**.
+This project demonstrates how **Exploratory Data Analysis can transform transactional food-delivery data into actionable business insights**.
 
-By analyzing restaurant demand, cuisine preferences, customer spending, ratings, preparation times, delivery performance, and revenue, FoodHub can make more informed decisions across operations, marketing, restaurant partnerships, and customer experience.
-
-The analysis highlights that improving delivery efficiency, strengthening relationships with high-demand restaurants, increasing customer feedback, and using targeted promotions can help FoodHub improve both customer satisfaction and business performance.
+The strongest opportunities identified are improving weekday delivery performance
